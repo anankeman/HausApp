@@ -1,0 +1,55 @@
+header {
+	background: #000066;
+}
+footer {
+	background: #0000;
+}
+.color1{
+	background: #3333ff;
+	
+}
+.color3{
+	background: #ff3300;
+}
+
+.barra{
+	background-color: #0066ff;
+	color: #ffffff;
+	border-bottom: 20px solid rgba(0, 255, 204, 0.6);
+	-moz-background-clip: border;     /* Firefox 3.6 */
+    -webkit-background-clip: border;  /* Safari 4? Chrome 6? */
+	background-clip: border-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+				
+	-moz-background-clip: padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+				
+	-moz-background-clip: content;     /* Firefox 3.6 */
+	-webkit-background-clip: content;  /* Safari 4? Chrome 6? */
+	background-clip: content-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 
+	z-index: 2000;*/
+}
+.subbarra{
+	height: 10px;
+	background-color: #33ccff;
+	opacity: 0.5;
+}
+.parallax { 
+  /* The image used */
+  background: url("../test.html");
+
+  /* Set a specific height */
+  height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.barra2{
+	background-color: #0066ff;
+	color: #ffffff;
+	height: 50px;
+}
