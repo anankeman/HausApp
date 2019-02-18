@@ -1,0 +1,146 @@
+html, body{
+    height:100%; /* important to vertically align the container */
+    margin:0;
+    padding:0;
+}
+
+.color1{
+	background: #13c9d6;
+	color: #fff;
+}
+.color2{
+	background: #3772ff;
+	color: #fff;
+}
+.color3{
+	background-color: #c200fb;
+	color: #fff;
+}
+
+.color4{
+	background-color: #ff6666;
+	color: #fff;
+}
+
+.color5{
+	background-color: #f2c924;
+	color: #fff;
+}
+
+.mynav {
+	background-color: #3772ff !important;
+	color: #fbf6f6;
+	border: 0;
+	border-radius: 0;
+	margin-bottom: 0px !important;
+}
+
+.mynav .navbar-nav>li>a {
+	color: #fbf6f6;
+}
+
+.menu{
+	vertical-align: middle;
+	display: inline-block;
+}
+.parallax { 
+  /* The image used */
+  background-image: url('/static/paul-carmona-393917-unsplash.jpg');
+
+  /* Set a specific height */
+  height: 300px; 
+  color: white;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  margin: 0 auto; /* Center the text container */
+  padding: 10px;
+  width: 400px;
+  mix-blend-mode: screen; /* This makes the cutout text possible */
+  transform: translate(0%, 40%);
+}
+
+.text2 {
+	padding: 80px 0;
+	
+}
+.clearfix {
+  overflow: auto;
+  height: 60px;
+  transform: translate(0%, 40%);
+}
+
+
+.navbar .navbar-brand {
+  color: #ecf0f1;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #fbf6f6;
+}
+.navbar .navbar-text {
+  color: #ecf0f1;
+}
+.navbar .navbar-text a {
+  color: #fbf6f6;
+}
+.navbar .navbar-text a:hover,
+.navbar .navbar-text a:focus {
+  color: #fbf6f6; 
+}
+.navbar .navbar-nav .nav-link {
+  color: #ecf0f1;
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #fbf6f6;
+}
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+  color: #fbf6f6;
+  background-color: #2c4a92;
+}
+.navbar .navbar-toggle {
+  border-color: #2c4a92;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #2c4a92;
+}
+.navbar .navbar-toggle .navbar-toggler-icon {
+  color: #ecf0f1;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar .navbar-link {
+  color: #ecf0f1;
+}
+.navbar .navbar-link:hover {
+  color: #fbf6f6;
+}

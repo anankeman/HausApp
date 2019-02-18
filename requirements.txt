@@ -1,0 +1,6 @@
+Flask==0.12.2
+Pandas==0.23.4
+Bokeh==1.0.4
+Numpy==1.14.2
+Geopandas==0.4.0
+Folium==0.6.0

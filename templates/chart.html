@@ -1,0 +1,169 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link
+		href="http://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.css"
+		rel="stylesheet" type="text/css">
+	<link
+		href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.css"
+		rel="stylesheet" type="text/css">
+	<script src="http://cdn.pydata.org/bokeh/release/bokeh-1.0.4.min.js"></script>
+	<script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.0.4.min.js"></script>
+	<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+	{{ resources }}
+</head>
+<body>
+	
+	<div id="navegador">
+		<nav class="mynav navbar navbar-default">
+		  <div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand glyphicon glyphicon-signal" aria-hidden="true">*</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav">
+				<li><a href="#">Description</a></li>
+				<li><a href="#">Prediction</a></li>
+			  </ul>
+			  
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="https://github.com/anankeman">The author</a></li>
+				
+				  </ul>
+				</li>
+			  </ul>
+			</div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	
+	<div id="presentacion_parallax" class="parallax container-fluid">
+		<h1 class="text-center align-middle text">Sydney House Finder</h1>
+		<div class="text-center align-middle text2">
+			<p><strong>Living in Sydney for a couple of months, I found isn't easy look a flatshare <br> for couples as most search websites are oriented to singles. <br> I hope this dashboard help you...despite is still a work in process </strong></p>
+		</div>
+	</div>
+	
+	<div id="menu" class="color5" >
+		<div class="row container-fluid align-middle clearfix">
+			<div class="col-sm-4">
+				<div id="filtro1" class="align-middle" style="display: inline-block;">
+					<label >Filter : </label>
+					<input type="Filter">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div id="distribution" >
+					<form action="/">
+						<label>Pick a metric : </label>
+						<select name="feature_name">
+							{% for feature in feature_names %}
+								{% if feature == current_feature_name %}
+									<option selected value="{{ feature }}">{{ feature }}</option> 
+								{% else %} 
+									<option value="{{ feature }}">{{ feature }}</option> 
+								{% endif %}
+							{% endfor %}
+						</select>
+						<input type="submit" style="display: inline;">
+					</form>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div id="pareja">
+					<form action="/" class="form-inline">
+						<div class="form-group">
+							<label> Filter by : </label>
+							<select name="tipos">
+								{% for tipo in tipos %}
+									{% if tipo == current_tipos %}
+										<option selected value="{{ tipo }}">{{ tipo }}</option> 
+									{% else %} 
+										<option value="{{ tipo }}">{{ tipo }}</option> 
+									{% endif %}
+								{% endfor %}
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="submit">
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<section class="row">
+		<div class="container-fluid">
+			<!---{% include "map.html" %}--->
+			<iframe src="{{ url_for('static', filename='map.html') }}" frameborder="0" width="100%" height="400" scrolling="no" style="pointer-events: none;"></iframe>
+		</div>
+	</section>
+	
+	<div class="container-fluid">
+		<section class="row display-flex">
+			<div class="color1 col-sm-4">
+
+				<h3>    Distribution</h3>
+				<p></p>
+				<div id="histogram">
+					
+				</div>
+				
+			</div>
+			<div class="color2 col-sm-4">
+				<h3>Prices are high</h3>
+				<div>
+					<p>Rent price tend to be very high, but there is few takes aways we can take out of the map: For instance, prices arrown CDB and beaches tend to be higher. Seen the distribution of prices we can see what is adove or below the median price (the price is just in the middle).</p>
+				</div>
+			</div>
+			<div class="color3 col-sm-4">
+				<h3>Cheapest neighborhoods</h3>
+				<div>
+					{{tabla1|safe}}
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="container-fluid">
+		<section class="row containter color3">
+			<div class="col-sm-4">
+				<h3>   Variation within a suburb </h3>
+				<p>In every suburb prices can vary a lot. The next chart shows how to much prices variates within a suburb. It is tradicionaly a boxplot chart, but! there is so many suburb that chart looks funny.</p>
+			</div>
+			<div class="col-sm-4">
+				<h3>Distribution by suburb</h3>
+				<div id="graph">
+					
+				</div>			
+			</div>
+			<div class="col-sm-4">
+				<h3>Expensive neighborhoods</h3>
+				{{tabla2|safe}}
+			</div>
+		</section>
+	</div>
+		<script>
+		  fetch('/plot')
+			.then(function(response) { return response.json(); })
+			.then(function(item) { Bokeh.embed.embed_item(item,"histogram"); })
+  </script>
+  <script>
+		  fetch('/plot2')
+			.then(function(response) { return response.json(); })
+			.then(function(item) { Bokeh.embed.embed_item(item, "graph"); })
+  </script>
+</body>
+</html>
