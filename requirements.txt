@@ -4,3 +4,4 @@ Bokeh==1.0.4
 Numpy==1.14.2
 Geopandas==0.4.0
 Folium==0.6.0
+gunicorn==19.9.0
