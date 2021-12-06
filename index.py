@@ -25,8 +25,8 @@ import datetime
 
  #### Get dataset from scrapyhub
  
-apikey= "c17aaf3afb114e59916306e0cd493350"
-tag=datetime.datetime.now().date()
+apikey = "c17aaf3afb114e59916306e0cd493350"
+tag = datetime.datetime.now().date()
 
 # update database (runscrapy spider)
 data = {
@@ -57,7 +57,7 @@ response = requests.get("https://storage.scrapinghub.com/items/"+ jobtodownload 
 
 
 data = response.json()
-df=pd.DataFrame.from_records(data)
+df = pd.DataFrame.from_records(data)
 
 ### Cleaning the dataset
 
