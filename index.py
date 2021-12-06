@@ -25,7 +25,9 @@ import datetime
 
  #### Get dataset from scrapyhub
  
-apikey = "c17aaf3afb114e59916306e0cd493350"
+with open('APIKEY.txt', r) as f:
+    apikey = f.read()
+
 tag = datetime.datetime.now().date()
 
 # update database (runscrapy spider)
